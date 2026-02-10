@@ -12,7 +12,23 @@
         </v-card>
       </v-col>
     </v-row>
-
+    <v-btn class="bg-blue" @click="goToContactUsGoddamit">Kontakta Oss</v-btn>
+    <nuxt-link to="/kontakta-oss">Kontakta Oss</nuxt-link>
     <example-comp />
   </v-container>
 </template>
+
+<script setup>
+import { ref as dbRef } from 'firebase/database'
+import { useDatabaseList, useDatabaseObject, useDatabase } from 'vuefire'
+
+const db = useDatabase()
+const todos = useDatabaseList(dbRef(db, 'todos'))
+const settings = useDatabaseObject(dbRef(db, 'settings'))
+function goToContactUsGoddamit() {
+  // This is a placeholder function. You can implement navigation logic here if needed.
+  console.log("Navigating to Kontakta Oss page...");
+
+  navigateTo('/kontakta-oss');
+}
+</script>
